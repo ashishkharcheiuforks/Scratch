@@ -1,4 +1,4 @@
-package com.appspell.scratchapplication.di
+package com.appspell.scratchapplication.features.di
 
 import java.lang.annotation.Documented
 import javax.inject.Scope
