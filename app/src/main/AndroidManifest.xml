@@ -13,7 +13,7 @@
         android:name=".ScratchApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".features.MainActivity">
+        <activity android:name=".features.presentation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

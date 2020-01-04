@@ -29,6 +29,9 @@ android {
             options.compilerArgs << "-Xmaxerrs" << "500" // or whatever number you want
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {

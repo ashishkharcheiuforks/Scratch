@@ -14,7 +14,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import timber.log.Timber
 import javax.inject.Singleton
 
-private const val BASE_URL = "https://api.github.com"
+private const val BASE_URL = "https://android-kotlin-fun-mars-server.appspot.com"
 
 @Module
 class NetworkModule {
