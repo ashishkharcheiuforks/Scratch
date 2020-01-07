@@ -2,20 +2,20 @@ package com.appspell.scratchapplication.features
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.work.Data
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.appspell.scratchapplication.R
 import com.appspell.scratchapplication.ScratchApplication
-import com.appspell.scratchapplication.features.data.GitHubApi
 import com.appspell.scratchapplication.features.di.DaggerMainActivityComponent
-import io.reactivex.android.schedulers.AndroidSchedulers
+import com.appspell.scratchapplication.features.downloader.DownloadWorker
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
-import javax.inject.Inject
+
+private const val DOWNLOAD_URL =
+    "https://mars.nasa.gov/system/downloadable_items/40047_PIA02406.jpg"
 
 class MainActivity : AppCompatActivity() {
-
-    @Inject
-    lateinit var api: GitHubApi
 
     private val disposable = CompositeDisposable()
 
@@ -30,19 +30,19 @@ class MainActivity : AppCompatActivity() {
             .build()
             .inject(this)
 
-        // just random api to test
-        api.fetchRepositoryList(org = "appspell", repositoryName = "Scratch")
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                {
-                    text.text = it.toString()
-                },
-                {
-                    text.text = it.message
-                }
-            )
-            .apply { disposable.add(this) }
+        startDownload.setOnClickListener {
+            // Start worker
+            val inputData = Data.Builder()
+                .putString(DownloadWorker.PARAMETER_URL, DOWNLOAD_URL)
+                .build()
+
+            val request = OneTimeWorkRequestBuilder<DownloadWorker>()
+                .setInputData(inputData)
+                .build()
+
+            WorkManager.getInstance(this).enqueue(request)
+
+        }
     }
 
     override fun onDestroy() {
