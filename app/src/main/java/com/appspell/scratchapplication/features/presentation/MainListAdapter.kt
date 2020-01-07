@@ -36,6 +36,5 @@ class MainListAdapter : ListAdapter<MarsProperty, RecyclerView.ViewHolder>(Diffe
         override fun areContentsTheSame(oldItem: MarsProperty, newItem: MarsProperty): Boolean {
             return oldItem == newItem
         }
-
     }
 }

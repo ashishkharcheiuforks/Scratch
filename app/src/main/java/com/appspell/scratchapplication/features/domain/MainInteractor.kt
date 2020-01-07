@@ -20,6 +20,7 @@ class MainInteractorImpl @Inject constructor(private val repository: MainReposit
 
     private fun MarsPropertyDO.asMarsProperty() = MarsProperty(
         id = id.hashCode(),
-        image = imgSrc
+        image = imgSrc,
+        price = "${price.toLong()}$"
     )
 }

@@ -3,5 +3,6 @@
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">github.com</domain>
         <domain includeSubdomains="true">www.mocky.io</domain>
+        <domain includeSubdomains="true">nasa.gov</domain>
     </domain-config>
 </network-security-config>
