@@ -11,8 +11,11 @@ import io.reactivex.Maybe
 interface TestDao {
 
     @Query("SELECT * FROM test_table")
-    fun getAll(): Flowable<List<DbEntity>>
+    fun getAll(): Flowable<List<TestEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun add(entity: DbEntity): Maybe<Long>
+    fun add(entity: TestEntity): Maybe<Long>
+
+    @Query("DELETE FROM test_table")
+    fun clearAll()
 }

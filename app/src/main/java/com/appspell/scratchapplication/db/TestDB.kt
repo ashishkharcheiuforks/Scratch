@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 
 @Database(version = 1,
-    entities = [DbEntity::class])
+    entities = [TestEntity::class])
 abstract class TestDB : RoomDatabase() {
 
     companion object {

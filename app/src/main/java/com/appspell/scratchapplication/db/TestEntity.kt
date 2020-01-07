@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "test_table")
-data class DbEntity(
+data class TestEntity(
     @PrimaryKey
     val key: String,
     val value: String
