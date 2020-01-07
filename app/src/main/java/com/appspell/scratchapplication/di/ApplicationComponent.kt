@@ -1,12 +1,13 @@
 package com.appspell.scratchapplication.di
 
 import android.app.Application
+import com.appspell.scratchapplication.features.downloader.DownloadImageSource
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [])
+@Component(modules = [NetworkModule::class])
 interface ApplicationComponent {
 
     @Component.Builder
@@ -16,4 +17,6 @@ interface ApplicationComponent {
 
         fun build(): ApplicationComponent
     }
+
+    fun getDownloadImageSource(): DownloadImageSource
 }
