@@ -30,4 +30,4 @@ https://github.com/appspell/Scratch/tree/mvvm
 
 Request a list of items from a server and show it in the RecyclerView using a simple implementation of DiffUtils. RecyclerView's adapter uses DataBinding.
 
-`AndroidX` `Retrofit` `Dagger` `RxJava2` `DataBindings`
+`AndroidX` `Retrofit` `Dagger` `RxJava2` `ViewModel` `LiveData` `DataBindings`
