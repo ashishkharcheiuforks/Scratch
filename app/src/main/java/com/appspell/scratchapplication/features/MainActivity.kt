@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             .inject(this)
 
         // just random api to test
-        api.fetchRepositoryList(org = "appspell", repositoryName = "Scratch")
+        api.fetchData()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
