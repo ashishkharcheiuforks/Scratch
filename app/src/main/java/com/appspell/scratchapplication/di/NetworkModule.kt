@@ -1,6 +1,7 @@
 package com.appspell.scratchapplication.di
 
 import com.appspell.scratchapplication.BuildConfig
+import com.appspell.scratchapplication.network.OAuthInterceptor
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -37,6 +38,7 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideClient(): OkHttpClient = OkHttpClient.Builder()
+        .addInterceptor(OAuthInterceptor())
         .addInterceptor(HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
             override fun log(message: String) {
                 Timber.i(message)
